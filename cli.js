@@ -177,8 +177,9 @@ async function zHackerman() {
   $(".console").append('<span style="white-space:normal" class="hackerman"></span>\n')
     while(hackerman) {
       await sleep(1);
-      var y = '#'+Math.floor(Math.random()*16777215).toString(16)+" ";
-      $(".hackerman").append(y);
+      var cor=Math.floor(Math.random()*16777215).toString(16);
+      var y = '#'+cor+" ";
+      $(".hackerman").append('<span style="color:#'+cor+'"> #'+cor+' <span>');
     }
 }
 
