@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  <script src="cli.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Questrial|Roboto+Mono" rel="stylesheet">
+  <title>CLI</title>
+
+<style type="text/css">
+
+/*
+font-family: 'Open Sans', sans-serif;
+font-family: 'Roboto Mono', monospace;
+font-family: 'Questrial', sans-serif;
+*/
+body {
+  background-color: black
+}
+.console {
+  margin-top:10px;
+  background-color: black;
+  color: green;
+  padding:10px;
+  font-family: 'Roboto Mono', monospace;
+  white-space: pre;
+}
+.label {
+  background-color: black;
+  color:green;
+  font-family: 'Roboto Mono', monospace;
+  padding:10px 00px 10px 10px;
+}
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.value {
+    flex:1;
+    background-color: black;
+    border: none;
+    color: green;
+    font-family: 'Roboto Mono', monospace;
+    padding:5px;
+}
+.value:focus {
+  outline:none;
+}
+.submit {
+  background-color: black;
+  border:none;
+  color:green;
+  font-size: 20px;
+}
+.submit:focus {
+  outline:none;
+}
+
+.console {min-height: 50px;}
+
+@media only screen and (max-width: 400px) {
+  .row {flex-direction: column;}
+  .label {flex:1;}
+  .value {flex:1;}
+  .submit {flex:1;}
+}
+</style>
+
+</head>
+
+<body>
+<div class="console"></div>
+<form class="FormSubmit">
+  <div class="flex row">
+    <div class="label">consola hyper funcional > </div>
+    <input type="text" class="value">
+    <button class="submit">↵</button>
+  </div>
+</form>
+
+
+</body>
+
+</html>
