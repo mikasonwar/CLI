@@ -42,14 +42,16 @@ document.body.onkeyup = function(e){
 
 
 function zSubmit() {
+  window.scrollTo(0,document.body.scrollHeight);
   selecionado = -1;
   var value = $(".value").val();
   if(value!="") {
     historia.puxar(value);
     resultado="Erro: Consulte o comando help";
-    help="comandos disponiveis: \nmeme\nmath\nhelp\nhistory\nprint";
+    help="comandos disponiveis: \n  meme\n  math\n  help\n  history\n  print\n  ascii";
     helpmeme="Opções disponiveis: lenny, shrug, tableflip, what";
     helpmath="math (NUMERO1) (OPERACAO) (NUMERO2)";
+    helpascii="Opções disponiveis: casa";
 
 
 
@@ -68,13 +70,7 @@ function zSubmit() {
             resultado= Number(x[1])*Number(x[3]);
             break;
           case "^":
-            var xx = Number(x[1]);
-            var yy = Number(x[3]);
-            resultado = xx;
-            for(var i=1;i<yy;i++) {
-              resultado=resultado*xx;
-            }
-            if(yy==0){resultado=1;}
+            resultado = Math.pow(Number(x[1]),Number(x[3]))
             break;
           case "mod":
             resultado= Number(x[1])%Number(x[3]);
@@ -122,6 +118,9 @@ function zSubmit() {
         case "math":
           resultado=helpmath;
           break;
+        case "ascii":
+          resultado=helpascii;
+          break;
         case undefined:
           resultado=help;
           break;
@@ -150,13 +149,67 @@ function zSubmit() {
    }
    if(x[0]=="hackerman") {
 
-    if(x[1]===undefined){
-      hackerman=true;
-      zHackerman();
-      resultado="";
-    } else {resultado="Erro: não é hackerman suficiente?"}
+    switch(x[1]) {
+      case undefined:
+        hackerman=true;
+        zHackerman();
+        resultado="";
+        break;
+      case "ascii":
+        resultado="";
+        resultado+="                                                                                                      \n";
+        resultado+="        ,--,                                                                                          \n";
+        resultado+="      ,--.'|                           ,-.                              ____                          \n";
+        resultado+="   ,--,  | :                       ,--/ /|                            ,'  , `.                        \n";
+        resultado+=",---.'|  : '                     ,--. :/ |             __  ,-.     ,-+-,.' _ |                 ,---,  \n";
+        resultado+="|   | : _' |                     :  : ' /            ,' ,'/ /|  ,-+-. ;   , ||             ,-+-. /  | \n";
+        resultado+=":   : |.'  |  ,--.--.     ,---.  |  '  /      ,---.  '  | |' | ,--.'|'   |  || ,--.--.    ,--.'|'   | \n";
+        resultado+="|   ' '  ; : /       \\   /     \\ '  |  :     /     \\ |  |   ,'|   |  ,', |  |,/       \\  |   |  ,\"' | \n";
+        resultado+="'   |  .'. |.--.  .-. | /    / ' |  |   \\   /    /  |'  :  /  |   | /  | |--'.--.  .-. | |   | /  | | \n";
+        resultado+="|   | :  | ' \\__\\/: . ..    ' /  '  : |. \\ .    ' / ||  | '   |   : |  | ,    \\__\\/: . . |   | |  | | \n";
+        resultado+="'   : |  : ; ,\" .--.; |'   ; :__ |  | ' \\ \\'   ;   /|;  : |   |   : |  |/     ,\" .--.; | |   | |  |/ \n";
+        resultado+="|   | '  ,/ /  /  ,.  |'   | '.'|'  : |--' '   |  / ||  , ;   |   | |`-'     /  /  ,.  | |   | |--'   \n";
+        resultado+=";   : ;--' ;  :   .'   \\   :    :;  |,'    |   :    | ---'    |   ;/        ;  :   .'   \\|   |/       \n";
+        resultado+="|   ,/     |  ,     .-./\\   \\  / '--'       \\   \\  /          '---'         |  ,     .-./'---'        \n";
+        resultado+="'---'       `--`---'     `----'              `----'                          `--`---'                 \n";
+        resultado+="                                                                                                      \n";
+        resultado+="Trabalho desgraçado para isto\n";
+        break;
+      default:
+       resultado="Erro: não é hackerman suficiente?"
+      }
 
-   }
+  }
+
+  if(x[0]=="ascii") {
+    switch(x[1]) {
+      case "casa":
+      resultado="";
+      resultado+="                                \n";
+      resultado+="              /\\\n";
+      resultado+="             /  \\\n";
+      resultado+="            /    \\\n";
+      resultado+="           /      \\          &o__________________/o\n";
+      resultado+="          /        \\        &o//o                  &o\\/o\n";
+      resultado+="         /          \\      &o/____________________\\/o\n";
+      resultado+="        /____________\\      &c|           ___    |/c\n";
+      resultado+="            &c|/c   &c|/c           &c|/c          &c|/c&a_|_/a&c|/c   &c|/c\n";
+      resultado+="            &c|/c   &c|/c           &c|/c  &c_/c       &c|_/c&a|/a&c_|/c   &c|/c\n";
+      resultado+="            &c|/c   &c|/c           &c|/c &c| |/c              &c|/c\n";
+      resultado+="____________&c|/c   &c|/c___________&c|/c_&c|_|/c______________&c|/c___________\n";
+      resultado+="\nFalta a casota para o cão\n(para por cores isto ficou bonito do lado do js ficou)";
+      resultado=resultado.replace(/&c/g,'<span style="color:brown">').replace(/\/c/g,"</span>");
+      resultado=resultado.replace(/&o/g,'<span style="color:orange">').replace(/\/o/g,"</span>");
+      resultado=resultado.replace(/&a/g,'<span style="color:dodgerblue">').replace(/\/a/g,"</span>");
+        break;
+      case "help":
+        resultado=helpascii;
+        break;
+      default:
+        resultado="Erro: faça ascii help para entender este comando.";
+    }
+
+  }
 
 
 
@@ -188,10 +241,13 @@ async function zHackerman() {
   $(".hackerman").removeClass('hackerman');
   $(".console").append('<span style="white-space:normal" class="hackerman"></span>\n')
     while(hackerman) {
+      window.scrollTo(0,document.body.scrollHeight);
       await sleep(1);
-      var cor=Math.floor(Math.random()*16777215).toString(16);
-      var y = '#'+cor+" ";
-      $(".hackerman").append('<span style="color:#'+cor+'"> #'+cor+' <span>');
+      for(var i=0;i<5;i++) {
+        var cor=Math.floor(Math.random()*16777215).toString(16);
+        var y = '#'+cor+" ";
+        $(".hackerman").append('<span style="color:#'+cor+'"> #'+cor+' <span>');
+      }
     }
 }
 
