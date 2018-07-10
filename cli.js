@@ -67,6 +67,18 @@ function zSubmit() {
           case "*":
             resultado= Number(x[1])*Number(x[3]);
             break;
+          case "^":
+            var xx = Number(x[1]);
+            var yy = Number(x[3]);
+            resultado = xx;
+            for(var i=1;i<yy;i++) {
+              resultado=resultado*xx;
+            }
+            if(yy==0){resultado=1;}
+            break;
+          case "mod":
+            resultado= Number(x[1])%Number(x[3]);
+            break;
           case "/":
             if (Number(x[3]==0)) {
               resultado= "(╯°□°）╯︵ ┻━┻";
